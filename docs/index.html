@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Integrator Pro | Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Prism for Code Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link { transition: all 0.2s ease; }
+        .nav-link:hover { color: #38bdf8; padding-left: 0.5rem; }
+        pre[class*="language-"] { border-radius: 0.75rem; margin-top: 1rem; background: #1e293b !important; border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex selection:bg-sky-500 selection:text-white">
+
+    <!-- Sidebar Navigation -->
+    <aside class="fixed inset-y-0 left-0 w-72 glass-card m-4 hidden lg:flex flex-col z-50">
+        <div class="p-6 border-b border-white/10">
+            <h1 class="text-2xl font-bold gradient-text">MP Integrator</h1>
+            <p class="text-xs text-slate-400 mt-1">v1.0.0 &bull; DeveloperTugrul</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-6 space-y-8">
+            <div>
+                <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Getting Started</h3>
+                <ul class="space-y-2">
+                    <li><a href="#introduction" class="nav-link block text-sm text-slate-300">Introduction</a></li>
+                    <li><a href="#installation" class="nav-link block text-sm text-slate-300">Installation</a></li>
+                    <li><a href="#configuration" class="nav-link block text-sm text-slate-300">Configuration</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Core Features</h3>
+                <ul class="space-y-2">
+                    <li><a href="#generators" class="nav-link block text-sm text-slate-300">High-Performance Generators</a></li>
+                    <li><a href="#products" class="nav-link block text-sm text-slate-300">Fetching & Filtering Products</a></li>
+                    <li><a href="#orders" class="nav-link block text-sm text-slate-300">Order Management & Statuses</a></li>
+                    <li><a href="#product-copy" class="nav-link block text-sm text-slate-300 text-sky-400">Fast Product Copy (Column Mapping)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 lg:ml-80 p-4 lg:p-12 pb-24 max-w-5xl">
+        
+        <header class="mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-6 border border-sky-500/20">
+                <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                Production Ready
+            </div>
+            <h1 class="text-5xl font-extrabold tracking-tight mb-6">Master Your Marketplaces.</h1>
+            <p class="text-xl text-slate-400 leading-relaxed max-w-2xl">
+                A highly optimized, memory-efficient integration library for pulling, filtering, matching, and copying products and orders from Trendyol and Amazon.
+            </p>
+        </header>
+
+        <section id="introduction" class="glass-card p-8 mb-10">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Introduction
+            </h2>
+            <p class="text-slate-300 mb-4">
+                When dealing with massive inventories (100k+ products), standard array returns cause fatal memory exhaustion. <strong>Marketplace Integrator Pro</strong> solves this by using PHP <code>Generators</code> under the hood. It maps vastly different APIs (Trendyol Supplier API and Amazon SP-API) into unified, standardized Models (<code>Product</code>, <code>Order</code>).
+            </p>
+            <p class="text-slate-300 font-medium text-amber-400">Note: This library is strictly designed for reading, listing, and importing data. It is not used for uploading/creating products on marketplaces.</p>
+        </section>
+
+        <section id="installation" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Installation</h2>
+            <div class="glass-card p-6">
+                <pre><code class="language-bash">composer require developertugrul/marketplace-integrator</code></pre>
+            </div>
+        </section>
+
+        <section id="configuration" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Initialization & Setup</h2>
+            <p class="text-slate-400 mb-4">Initialize your internal mapping and connect your marketplace clients.</p>
+            <div class="glass-card p-6">
+                <pre><code class="language-php">use DeveloperTugrul\MarketplaceIntegrator\MarketplaceManager;
+use DeveloperTugrul\MarketplaceIntegrator\ProductMapper;
+use DeveloperTugrul\MarketplaceIntegrator\Clients\TrendyolClient;
+use DeveloperTugrul\MarketplaceIntegrator\Clients\AmazonClient;
+
+// 1. Setup Mapper with your internal DB products
+$mapper = new ProductMapper();
+$mapper->addInternalProduct($internalDbId = 501, $sku = 'TR-TSHIRT-01', $barcode = '869000001');
+
+// 2. Initialize Manager
+$manager = new MarketplaceManager($mapper);
+
+// 3. Add Clients
+$manager->addClient(new TrendyolClient('SUPPLIER_ID', 'API_KEY', 'API_SECRET'));
+$manager->addClient(new AmazonClient('SELLER_ID', 'MARKETPLACE_ID', ['access_token' => '...']));
+</code></pre>
+            </div>
+        </section>
+
+        <section id="generators" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Performance: Why Generators?</h2>
+            <p class="text-slate-400 mb-6">
+                Instead of waiting for an API to return 50,000 products before you can loop them, our clients <code>yield</code> results immediately as they paginate. Memory consumption remains strictly flat.
+            </p>
+        </section>
+
+        <section id="products" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Fetching & Filtering Products</h2>
+            <div class="glass-card p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-2">Example: Fetching mapped products</h3>
+                <pre><code class="language-php">// $filters arrays map directly to underlying API query parameters
+$filters = ['size' => 200, 'approved' => true];
+
+foreach ($manager->getMappedProducts($filters) as $result) {
+    if ($result['is_matched']) {
+        echo "Found Match! DB ID: " . $result['internal_id'] . "\n";
+    }
+    
+    $product = $result['marketplace_product']; // Instance of Product Model
+    echo $product->title . " - " . $product->price . " TL\n";
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="orders" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Order Management & Statuses</h2>
+            <p class="text-slate-400 mb-4">
+                Amazon and Trendyol have completely different status names. We map them internally to constants like <code>Order::STATUS_NEW</code>, <code>Order::STATUS_INVOICED</code>, <code>Order::STATUS_SHIPPED</code>, and <code>Order::STATUS_DELIVERED</code>.
+            </p>
+            <div class="glass-card p-6">
+                <pre><code class="language-php">use DeveloperTugrul\MarketplaceIntegrator\Models\Order;
+
+// Filter specifically for newly created orders in the last 24 hours
+$filters = [
+    'status' => 'Created', // Trendyol specific raw filter
+    'startDate' => (new \DateTime('-1 day'))->getTimestamp() * 1000,
+];
+
+foreach ($manager->getMappedOrders($filters) as $order) {
+    if ($order->status === Order::STATUS_NEW) {
+        echo "New Order: {$order->orderNumber} | Customer: {$order->customerFirstName}\n";
+        echo "Ship to: {$order->shippingAddress}\n";
+        
+        foreach ($order->items as $item) {
+            echo "-> SKU: {$item->sku} (Mapped to DB ID: {$item->internalProductId})\n";
+        }
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="product-copy" class="mb-16">
+            <h2 class="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Fast Product Copy (Column Mapping)</h2>
+            <p class="text-slate-400 mb-6 text-lg">
+                Need to quickly import a product from Trendyol to your internal Laravel Database? 
+                Use the professional column mapper. It translates the unified Product model into your exact database array structure.
+            </p>
+            <div class="glass-card p-6 border-emerald-500/30">
+                <pre><code class="language-php">// The marketplace you want to pull from and the product SKU/Barcode
+$marketplace = 'trendyol';
+$productId = '8691234567890'; // e.g., barcode
+
+// Define how the library's Product model maps to your Database Columns
+$dbColumnMap = [
+    'db_title' => 'title',
+    'db_price_col' => 'price',
+    'stock_amount' => 'quantity',
+    'product_sku' => 'sku',
+    'brand_name' => 'brand',
+    'primary_image' => 'images.0', // Supports dot notation!
+];
+
+// Returns a beautiful, ready-to-insert array for your ORM
+$insertData = $manager->copyProductToDatabaseFormat($marketplace, $productId, $dbColumnMap);
+
+/* 
+Resulting $insertData:
+[
+    'db_title' => 'Awesome T-Shirt',
+    'db_price_col' => 149.90,
+    'stock_amount' => 50,
+    'product_sku' => 'TSHIRT-01',
+    'brand_name' => 'Defacto',
+    'primary_image' => 'https://cdn.trendyol.../img.jpg'
+]
+*/
+
+// Now just insert it into your database!
+// Product::create($insertData);
+</code></pre>
+            </div>
+        </section>
+        
+        <footer class="border-t border-white/10 pt-8 mt-16 text-center text-slate-500 text-sm">
+            &copy; 2026 DeveloperTugrul. Built for maximum performance and elegance.
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
+
