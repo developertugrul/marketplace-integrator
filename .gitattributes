@@ -1,0 +1,13 @@
+* text=auto
+
+*.php text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+
+/tests export-ignore
+/.github export-ignore
+/.editorconfig export-ignore
+/.gitignore export-ignore
+/docs export-ignore
+/version-update.php export-ignore
