@@ -6,7 +6,8 @@
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^13.12",
-        "nesbot/carbon": "^3.11"
+        "nesbot/carbon": "^3.11",
+        "highsidelabs/laravel-spapi": "^2.1"
     },
     "autoload": {
         "psr-4": {

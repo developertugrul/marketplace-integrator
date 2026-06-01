@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb66c9972f950de341f568c5d0405fcf",
+    "content-hash": "b463149949d79a4cbe202907207c5e55",
     "packages": [
+        {
+            "name": "brick/math",
+            "version": "0.17.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/math.git",
+                "reference": "8189e751995f9e15729c1aa2f89fa8f166ffe818"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brick/math/zipball/8189e751995f9e15729c1aa2f89fa8f166ffe818",
+                "reference": "8189e751995f9e15729c1aa2f89fa8f166ffe818",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "2.1.22",
+                "phpunit/phpunit": "^11.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Brick\\Math\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Arbitrary-precision arithmetic library",
+            "keywords": [
+                "Arbitrary-precision",
+                "BigInteger",
+                "BigRational",
+                "arithmetic",
+                "bigdecimal",
+                "bignum",
+                "bignumber",
+                "brick",
+                "decimal",
+                "integer",
+                "math",
+                "mathematics",
+                "rational"
+            ],
+            "support": {
+                "issues": "https://github.com/brick/math/issues",
+                "source": "https://github.com/brick/math/tree/0.17.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/BenMorel",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-05-25T20:34:43+00:00"
+        },
         {
             "name": "carbonphp/carbon-doctrine-types",
             "version": "3.2.0",
@@ -493,6 +552,134 @@
             "time": "2026-05-29T12:59:07+00:00"
         },
         {
+            "name": "highsidelabs/laravel-spapi",
+            "version": "v2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/highsidelabs/laravel-spapi.git",
+                "reference": "29d1f8923b326fd51288609c77db57748aea83eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/highsidelabs/laravel-spapi/zipball/29d1f8923b326fd51288609c77db57748aea83eb",
+                "reference": "29d1f8923b326fd51288609c77db57748aea83eb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^11.0|^12.0|^13.0",
+                "illuminate/database": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "jlevers/selling-partner-api": "^7.1",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.17",
+                "orchestra/testbench": "^9.2",
+                "phpunit/phpunit": "^11.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "HighsideLabs\\LaravelSpApi\\SellingPartnerApiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HighsideLabs\\LaravelSpApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse Evers",
+                    "email": "jesse@highsidelabs.co"
+                }
+            ],
+            "description": "A Laravel wrapper for Amazon's Selling Partner API (via jlevers/selling-partner-api)",
+            "keywords": [
+                "amazon",
+                "ecommerce",
+                "laravel",
+                "rest",
+                "sdk",
+                "selling-partner-api",
+                "sp-api",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/highsidelabs/laravel-spapi/issues",
+                "source": "https://github.com/highsidelabs/laravel-spapi/tree/v2.1.3"
+            },
+            "time": "2026-03-27T22:57:14+00:00"
+        },
+        {
+            "name": "illuminate/cache",
+            "version": "v13.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/cache.git",
+                "reference": "f6fd4b36c8d0c89572a53da0d4842a780bddc107"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/f6fd4b36c8d0c89572a53da0d4842a780bddc107",
+                "reference": "f6fd4b36c8d0c89572a53da0d4842a780bddc107",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^13.0",
+                "illuminate/contracts": "^13.0",
+                "illuminate/macroable": "^13.0",
+                "illuminate/support": "^13.0",
+                "php": "^8.3"
+            },
+            "provide": {
+                "psr/simple-cache-implementation": "1.0 || 2.0 || 3.0"
+            },
+            "suggest": {
+                "ext-apcu": "Required to use the APC cache driver.",
+                "ext-filter": "Required to use the DynamoDb cache driver.",
+                "ext-memcached": "Required to use the memcache cache driver.",
+                "illuminate/database": "Required to use the database cache driver (^13.0).",
+                "illuminate/filesystem": "Required to use the file cache driver (^13.0).",
+                "illuminate/redis": "Required to use the redis cache driver (^13.0).",
+                "symfony/cache": "Required to use PSR-6 cache bridge (^7.4 || ^8.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "13.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Cache\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Cache package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2026-05-22T15:12:33+00:00"
+        },
+        {
             "name": "illuminate/collections",
             "version": "v13.12.0",
             "source": {
@@ -599,6 +786,68 @@
             "time": "2026-02-25T16:07:55+00:00"
         },
         {
+            "name": "illuminate/container",
+            "version": "v13.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/container.git",
+                "reference": "be0ad39a3abf4d9a498952e58908c5d6da0f5ede"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/be0ad39a3abf4d9a498952e58908c5d6da0f5ede",
+                "reference": "be0ad39a3abf4d9a498952e58908c5d6da0f5ede",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^13.0",
+                "illuminate/reflection": "^13.0",
+                "php": "^8.3",
+                "psr/container": "^1.1.1 || ^2.0.1",
+                "symfony/polyfill-php84": "^1.36",
+                "symfony/polyfill-php85": "^1.36"
+            },
+            "provide": {
+                "psr/container-implementation": "1.1 || 2.0"
+            },
+            "suggest": {
+                "illuminate/auth": "Required to use the Auth attribute",
+                "illuminate/cache": "Required to use the Cache attribute",
+                "illuminate/config": "Required to use the Config attribute",
+                "illuminate/database": "Required to use the DB attribute",
+                "illuminate/filesystem": "Required to use the Storage attribute",
+                "illuminate/log": "Required to use the Log or Context attributes"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "13.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Container\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Container package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2026-05-13T13:58:52+00:00"
+        },
+        {
             "name": "illuminate/contracts",
             "version": "v13.12.0",
             "source": {
@@ -645,6 +894,79 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2026-05-21T13:18:48+00:00"
+        },
+        {
+            "name": "illuminate/database",
+            "version": "v13.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/database.git",
+                "reference": "b906694200284bea640c6014534473426ec83dd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/b906694200284bea640c6014534473426ec83dd8",
+                "reference": "b906694200284bea640c6014534473426ec83dd8",
+                "shasum": ""
+            },
+            "require": {
+                "brick/math": "^0.14.2 || ^0.15 || ^0.16 || ^0.17",
+                "ext-pdo": "*",
+                "illuminate/collections": "^13.0",
+                "illuminate/container": "^13.0",
+                "illuminate/contracts": "^13.0",
+                "illuminate/macroable": "^13.0",
+                "illuminate/support": "^13.0",
+                "laravel/serializable-closure": "^2.0.10",
+                "php": "^8.3",
+                "symfony/polyfill-php84": "^1.36",
+                "symfony/polyfill-php85": "^1.36",
+                "symfony/polyfill-php86": "^1.36"
+            },
+            "suggest": {
+                "ext-filter": "Required to use the Postgres database driver.",
+                "fakerphp/faker": "Required to use the eloquent factory builder (^1.24).",
+                "illuminate/console": "Required to use the database commands (^13.0).",
+                "illuminate/events": "Required to use the observers with Eloquent (^13.0).",
+                "illuminate/filesystem": "Required to use the migrations (^13.0).",
+                "illuminate/http": "Required to convert Eloquent models to API resources (^13.0).",
+                "illuminate/pagination": "Required to paginate the result set (^13.0).",
+                "symfony/finder": "Required to use Eloquent model factories (^7.4 || ^8.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "13.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Database\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Database package.",
+            "homepage": "https://laravel.com",
+            "keywords": [
+                "database",
+                "laravel",
+                "orm",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2026-05-25T23:05:07+00:00"
         },
         {
             "name": "illuminate/macroable",
@@ -823,6 +1145,137 @@
             "time": "2026-05-25T23:04:25+00:00"
         },
         {
+            "name": "jlevers/selling-partner-api",
+            "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jlevers/selling-partner-api.git",
+                "reference": "7cecd56b191cbb0710ec55479c77009d92e166a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jlevers/selling-partner-api/zipball/7cecd56b191cbb0710ec55479c77009d92e166a6",
+                "reference": "7cecd56b191cbb0710ec55479c77009d92e166a6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "openspout/openspout": "^4.23",
+                "php": ">=8.2",
+                "saloonphp/saloon": "^4.0"
+            },
+            "require-dev": {
+                "composer/semver": "^3.4",
+                "fakerphp/faker": "^1.23",
+                "highsidelabs/saloon-sdk-generator": "^2.1.8",
+                "laravel/pint": "^1.13",
+                "phpcompatibility/php-compatibility": "dev-develop",
+                "phpunit/phpunit": "^11.2",
+                "psy/psysh": "^0.12.0",
+                "symfony/console": "^7.0",
+                "voku/simple_html_dom": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Generator/constants.php"
+                ],
+                "psr-4": {
+                    "SellingPartnerApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse Evers",
+                    "homepage": "https://jesseevers.com"
+                }
+            ],
+            "description": "PHP client for Amazon's Selling Partner API",
+            "keywords": [
+                "amazon",
+                "api",
+                "ecommerce",
+                "rest",
+                "sdk",
+                "selling-partner-api",
+                "sp-api"
+            ],
+            "support": {
+                "issues": "https://github.com/jlevers/selling-partner-api/issues",
+                "source": "https://github.com/jlevers/selling-partner-api/tree/v7.4.8"
+            },
+            "time": "2026-05-24T18:15:17+00:00"
+        },
+        {
+            "name": "laravel/serializable-closure",
+            "version": "v2.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/serializable-closure.git",
+                "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
+                "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "nesbot/carbon": "^2.67|^3.0",
+                "pestphp/pest": "^2.36|^3.0|^4.0",
+                "phpstan/phpstan": "^2.0",
+                "symfony/var-dumper": "^6.2.0|^7.0.0|^8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\SerializableClosure\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Nuno Maduro",
+                    "email": "nuno@laravel.com"
+                }
+            ],
+            "description": "Laravel Serializable Closure provides an easy and secure way to serialize closures in PHP.",
+            "keywords": [
+                "closure",
+                "laravel",
+                "serializable"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/serializable-closure/issues",
+                "source": "https://github.com/laravel/serializable-closure"
+            },
+            "time": "2026-04-16T14:03:50+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "3.11.4",
             "source": {
@@ -926,6 +1379,99 @@
                 }
             ],
             "time": "2026-04-07T09:57:54+00:00"
+        },
+        {
+            "name": "openspout/openspout",
+            "version": "v4.32.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/openspout/openspout.git",
+                "reference": "41f045c1f632e1474e15d4c7bc3abcb4a153563d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/41f045c1f632e1474e15d4c7bc3abcb4a153563d",
+                "reference": "41f045c1f632e1474e15d4c7bc3abcb4a153563d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-filter": "*",
+                "ext-libxml": "*",
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0"
+            },
+            "require-dev": {
+                "ext-zlib": "*",
+                "friendsofphp/php-cs-fixer": "^3.86.0",
+                "infection/infection": "^0.31.2",
+                "phpbench/phpbench": "^1.4.1",
+                "phpstan/phpstan": "^2.1.22",
+                "phpstan/phpstan-phpunit": "^2.0.7",
+                "phpstan/phpstan-strict-rules": "^2.0.6",
+                "phpunit/phpunit": "^12.3.7"
+            },
+            "suggest": {
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-mbstring\" is not already installed or is too limited)",
+                "ext-mbstring": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OpenSpout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
+                }
+            ],
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://github.com/openspout/openspout",
+            "keywords": [
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/openspout/openspout/issues",
+                "source": "https://github.com/openspout/openspout/tree/v4.32.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/filippotessarotto",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Slamdunk",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-09-03T16:03:54+00:00"
         },
         {
             "name": "psr/clock",
@@ -1282,6 +1828,87 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "saloonphp/saloon",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saloonphp/saloon.git",
+                "reference": "1307b1d72cacdd2c9c20978cdf7a0b720b4bf3bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/1307b1d72cacdd2c9c20978cdf7a0b720b4bf3bb",
+                "reference": "1307b1d72cacdd2c9c20978cdf7a0b720b4bf3bb",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.6",
+                "guzzlehttp/promises": "^1.5 || ^2.0",
+                "guzzlehttp/psr7": "^2.0",
+                "php": "^8.2",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0"
+            },
+            "conflict": {
+                "sammyjo20/saloon": "*"
+            },
+            "require-dev": {
+                "ext-simplexml": "*",
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "illuminate/collections": "^10.0 || ^11.0 || ^12.0",
+                "league/flysystem": "^3.0",
+                "pestphp/pest": "^2.36.0 || ^3.8.2 || ^4.1.4",
+                "phpstan/phpstan": "^2.1.13",
+                "saloonphp/xml-wrangler": "^1.1",
+                "spatie/invade": "^2.1",
+                "symfony/dom-crawler": "^6.0 || ^7.0",
+                "symfony/var-dumper": "^6.3 || ^7.0"
+            },
+            "suggest": {
+                "illuminate/collections": "Required for the response collect() method.",
+                "saloonphp/xml-wrangler": "Required for the response xmlReader() method.",
+                "symfony/dom-crawler": "Required for the response dom() method.",
+                "symfony/var-dumper": "Required for default debugging drivers."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Saloon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Carré",
+                    "email": "29132017+Sammyjo20@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Build beautiful API integrations and SDKs with Saloon",
+            "homepage": "https://github.com/saloonphp/saloon",
+            "keywords": [
+                "api",
+                "api-integrations",
+                "saloon",
+                "sammyjo20",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/saloonphp/saloon/issues",
+                "source": "https://github.com/saloonphp/saloon/tree/v4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sammyjo20",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-17T22:58:33+00:00"
         },
         {
             "name": "symfony/clock",

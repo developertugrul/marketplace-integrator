@@ -97,22 +97,43 @@
         <section id="configuration" class="mb-16">
             <h2 class="text-2xl font-bold mb-4">Initialization & Setup</h2>
             <p class="text-slate-400 mb-4">Initialize your internal mapping and connect your marketplace clients.</p>
+            
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-300">Amazon SP-API Requirements</h3>
+                <p class="text-sm text-slate-400">This library natively utilizes <code>highsidelabs/laravel-spapi</code>. Ensure your Laravel <code>.env</code> file includes:</p>
+                <pre class="text-xs mt-2"><code class="language-bash">SPAPI_AWS_ACCESS_KEY_ID=
+SPAPI_AWS_SECRET_ACCESS_KEY=
+SPAPI_LWA_CLIENT_ID=
+SPAPI_LWA_CLIENT_SECRET=
+SPAPI_LWA_REFRESH_TOKEN=
+SPAPI_AWS_ROLE_ARN=</code></pre>
+            </div>
+
             <div class="glass-card p-6">
                 <pre><code class="language-php">use DeveloperTugrul\MarketplaceIntegrator\MarketplaceManager;
 use DeveloperTugrul\MarketplaceIntegrator\ProductMapper;
 use DeveloperTugrul\MarketplaceIntegrator\Clients\TrendyolClient;
 use DeveloperTugrul\MarketplaceIntegrator\Clients\AmazonClient;
+use SellingPartnerApi\Seller\SellerConnector; // Auto-injected in Laravel
 
-// 1. Setup Mapper with your internal DB products
-$mapper = new ProductMapper();
-$mapper->addInternalProduct($internalDbId = 501, $sku = 'TR-TSHIRT-01', $barcode = '869000001');
+// In your Laravel Controller or Command:
+public function sync(SellerConnector $amazonConnector) 
+{
+    // 1. Setup Mapper with your internal DB products
+    $mapper = new ProductMapper();
+    $mapper->addInternalProduct($internalDbId = 501, $sku = 'TR-TSHIRT-01', $barcode = '869000001');
 
-// 2. Initialize Manager
-$manager = new MarketplaceManager($mapper);
+    // 2. Initialize Manager
+    $manager = new MarketplaceManager($mapper);
 
-// 3. Add Clients
-$manager->addClient(new TrendyolClient('SUPPLIER_ID', 'API_KEY', 'API_SECRET'));
-$manager->addClient(new AmazonClient('SELLER_ID', 'MARKETPLACE_ID', ['access_token' => '...']));
+    // 3. Add Clients
+    $manager->addClient(new TrendyolClient('SUPPLIER_ID', 'API_KEY', 'API_SECRET'));
+    
+    // AmazonClient expects the SellerConnector and defaults to Amazon TR (A33AVAJ2PDY3EV)
+    $manager->addClient(new AmazonClient($amazonConnector));
+    
+    // Ready to sync!
+}
 </code></pre>
             </div>
         </section>
