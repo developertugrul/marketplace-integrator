@@ -32,7 +32,7 @@
     <aside class="fixed inset-y-0 left-0 w-72 glass-card m-4 hidden lg:flex flex-col z-50">
         <div class="p-6 border-b border-white/10">
             <h1 class="text-2xl font-bold gradient-text">MP Integrator</h1>
-            <p class="text-xs text-slate-400 mt-1">v1.0.0 &bull; DeveloperTugrul</p>
+            <p class="text-xs text-slate-400 mt-1">v2.0.0 &bull; DeveloperTugrul</p>
         </div>
         <nav class="flex-1 overflow-y-auto p-6 space-y-8">
             <div>
@@ -47,9 +47,16 @@
                 <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Core Features</h3>
                 <ul class="space-y-2">
                     <li><a href="#generators" class="nav-link block text-sm text-slate-300">High-Performance Generators</a></li>
-                    <li><a href="#products" class="nav-link block text-sm text-slate-300">Fetching & Filtering Products</a></li>
-                    <li><a href="#orders" class="nav-link block text-sm text-slate-300">Order Management & Statuses</a></li>
-                    <li><a href="#product-copy" class="nav-link block text-sm text-slate-300 text-sky-400">Fast Product Copy (Column Mapping)</a></li>
+                    <li><a href="#products" class="nav-link block text-sm text-slate-300">Fetching Products</a></li>
+                    <li><a href="#orders" class="nav-link block text-sm text-slate-300">Fetching Orders</a></li>
+                    <li><a href="#product-copy" class="nav-link block text-sm text-slate-300 text-sky-400">Fast Product Copy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Data Structures</h3>
+                <ul class="space-y-2">
+                    <li><a href="#model-product" class="nav-link block text-sm text-slate-300">Product Response Model</a></li>
+                    <li><a href="#model-order" class="nav-link block text-sm text-slate-300">Order Response Model</a></li>
                 </ul>
             </div>
         </nav>
@@ -203,6 +210,69 @@ Resulting $insertData:
 </code></pre>
             </div>
         </section>
+
+        <section id="model-product" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Product Model Response Structure</h2>
+            <p class="text-slate-400 mb-4">
+                Regardless of the marketplace (Trendyol or Amazon), every fetched product is unified into this exact structure. This makes handling multi-marketplace logic extremely easy.
+            </p>
+            <div class="glass-card p-6">
+                <pre><code class="language-json">{
+  "id": "123456",
+  "sku": "TR-TSHIRT-01",
+  "barcode": "869000001",
+  "title": "Awesome Basic T-Shirt",
+  "price": 149.90,
+  "quantity": 50,
+  "marketplace": "trendyol",
+  "brand": "Defacto",
+  "category": "T-Shirt",
+  "description": "100% Cotton basic t-shirt",
+  "images": [
+    "https://cdn.trendyol.com/image1.jpg",
+    "https://cdn.trendyol.com/image2.jpg"
+  ],
+  "attributes": [
+    { "attributeId": 338, "attributeName": "Beden", "attributeValue": "M" }
+  ]
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="model-order" class="mb-16">
+            <h2 class="text-2xl font-bold mb-4">Order Model Response Structure</h2>
+            <p class="text-slate-400 mb-4">
+                Orders from both Amazon and Trendyol are unified into this structure. Notice the standardized <code>status</code> property and unified addressing.
+            </p>
+            <div class="glass-card p-6">
+                <pre><code class="language-json">{
+  "id": "987654",
+  "orderNumber": "111-222-333",
+  "status": "shipped",
+  "totalPrice": 299.80,
+  "marketplace": "amazon",
+  "createdAt": "2026-06-01T09:00:00+00:00",
+  "customerFirstName": "John",
+  "customerLastName": "Doe",
+  "customerEmail": "john.doe@example.com",
+  "customerPhone": null,
+  "shippingAddress": "123 Main St, Apartment 4B, New York",
+  "billingAddress": "123 Main St, Apartment 4B, New York",
+  "cargoProvider": "Aras Kargo",
+  "cargoTrackingNumber": "1234567890123",
+  "items": [
+    {
+      "productId": "AMZ-999",
+      "sku": "TR-TSHIRT-01",
+      "title": "Awesome Basic T-Shirt",
+      "quantity": 2,
+      "price": 149.90,
+      "internalProductId": 501
+    }
+  ]
+}</code></pre>
+            </div>
+        </section>
         
         <footer class="border-t border-white/10 pt-8 mt-16 text-center text-slate-500 text-sm">
             &copy; 2026 DeveloperTugrul. Built for maximum performance and elegance.
@@ -212,6 +282,7 @@ Resulting $insertData:
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 </body>
 </html>
